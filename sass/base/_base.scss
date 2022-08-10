@@ -1,0 +1,20 @@
+@use '../abstracts' as *;
+
+/* ==============================
+ * Base | Global
+ * ------------------------------ */
+html, 
+body {
+  font-family: var(--ff-body);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-normal);
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--neutral-400);
+}
+
+h1 {
+  font-family: var(--ff-heading);
+}

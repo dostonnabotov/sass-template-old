@@ -1,0 +1,9 @@
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.grid--responsive {
+  grid-template-columns: 
+    repeat(auto-fit, minmax(min(var(--width, 300px), 100%), 1fr));
+}

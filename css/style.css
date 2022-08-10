@@ -1,0 +1,224 @@
+/* ==============================
+ * Abstracts | Root
+ * ------------------------------ */
+:root {
+  --neutral-100: hsl(0deg, 0%, 100%);
+  --neutral-200: hsl(0deg, 0%, 90%);
+  --neutral-300: hsl(0deg, 0%, 70%);
+  --neutral-400: hsl(244deg, 10%, 30%);
+  --neutral-700: hsl(0deg, 0%, 20%);
+  --neutral-800: hsl(0deg, 0%, 12%);
+  --neutral-900: hsl(0deg, 0%, 0%);
+  --bg-body: hsl(0deg, 0%, 100%);
+  --ff-primary: "Source Sans Pro", sans-serif;
+  --ff-secondary: "Merriweather", serif;
+  --ff-body: var(--ff-primary);
+  --ff-heading: var(--ff-secondary);
+  --fw-normal: 400;
+  --fw-bold: 700;
+  --fs-300: 0.875rem;
+  --fs-400: 1rem;
+  --fs-500: 1.125rem;
+  --fs-600: 1.375rem;
+  --fs-700: 2rem;
+}
+@media (min-width: 50em) {
+  :root {
+    --fs-400: 1.125rem;
+    --fs-500: 1.375rem;
+    --fs-600: 2rem;
+    --fs-700: 2.75rem;
+  }
+}
+
+.dark-theme {
+  --neutral-100: hsl(0deg, 0%, 0%);
+  --neutral-200: hsl(0deg, 0%, 12%);
+  --neutral-300: hsl(0deg, 0%, 20%);
+  --neutral-400: hsl(0deg, 0%, 90%);
+  --neutral-700: hsl(0deg, 0%, 70%);
+  --neutral-800: hsl(0deg, 0%, 90%);
+  --neutral-900: hsl(0deg, 0%, 100%);
+  --bg-body: hsl(0deg, 0%, 12%);
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("/fonts/Merriweather/Merriweather-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* ==============================
+ * Vendors | Modern Reset
+ * ------------------------------ */
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+*::before,
+*::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ==============================
+ * Base | Reset
+ * ------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+p:not([class]),
+ul:not([class]),
+li:not([class]) {
+  max-width: 60ch;
+}
+
+/* ==============================
+ * Base | Global
+ * ------------------------------ */
+html,
+body {
+  font-family: var(--ff-body);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-normal);
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--neutral-400);
+}
+
+h1 {
+  font-family: var(--ff-heading);
+}
+
+.container {
+  width: min(100% - 2rem, 56.25rem);
+  margin-inline: auto;
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-block-start: var(--flow-spacer, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.grid--responsive {
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--width, 300px), 100%), 1fr));
+}
+
+.sr-only {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
+}
+
+/* ==============================
+ * Components | Buttons
+ * ------------------------------ */
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0.8em 2em;
+  border: 0;
+  outline: 0;
+  border-radius: 0.2em;
+  cursor: pointer;
+  color: inherit;
+  font-family: var(--ff-secondary);
+  line-height: 1;
+  text-decoration: none;
+  /* optional */
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+.btn[data-type=primary] {
+  background-color: var(--neutral-800);
+  color: var(--neutral-100);
+}
+
+/* button | active state */
+button:active,
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* ==============================
+ * Layout | Header
+ * ------------------------------ */
+/* ==============================
+ * Layout | Sidebar
+ * ------------------------------ */
+/* ==============================
+ * Layout | Forms
+ * ------------------------------ */
+/* ==============================
+ * Layout | Footer
+ * ------------------------------ */
+/* ==============================
+ * Pages | About
+ * ------------------------------ */
+/* ==============================
+ * Pages | Contact
+ * ------------------------------ */
+
+/*# sourceMappingURL=style.css.map */

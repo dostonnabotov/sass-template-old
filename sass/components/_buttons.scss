@@ -1,0 +1,35 @@
+@use '../abstracts' as *;
+
+/* ==============================
+ * Components | Buttons
+ * ------------------------------ */
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  
+  padding: .8em 2em;
+  border: 0;
+  outline: 0;
+  border-radius: .2em;
+  cursor: pointer;
+  color: inherit;
+
+  font-family: var(--ff-secondary);
+  line-height: 1;
+  text-decoration: none;
+
+  /* optional */
+  letter-spacing: 1px;
+  text-transform: capitalize;
+
+  &[data-type="primary"] {
+    background-color: var(--neutral-800);
+    color: var(--neutral-100);
+  }
+}
+
+/* button | active state */
+button:active,
+.btn:active {
+  transform: scale(0.97);
+}
