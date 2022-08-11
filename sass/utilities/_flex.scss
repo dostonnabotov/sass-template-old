@@ -1,0 +1,32 @@
+@use '../abstracts' as *;
+
+/* ==============================
+ * Utilities | Flex
+ * ------------------------------ */
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+$columns: 12;
+
+[class^=col-] {
+  flex-basis: 100%;
+}
+
+@include mq(md) {
+  @for $i from 1 through $columns {
+    .col-#{$i} {
+      flex: 0 0 calc(100% / ($columns / $i));
+    }
+
+    .col-offset-#{$i} {
+      margin-left: calc(100% / ($columns / $i));
+    }
+  }
+}

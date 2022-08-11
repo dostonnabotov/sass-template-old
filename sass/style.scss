@@ -1,10 +1,12 @@
 @charset 'utf-8';
 
 @use './abstracts';
+@use './themes';
 @use './vendors';
 @use './base';
 @use './utilities';
 @use './components';
 @use './layout';
 @use './pages';
-@use './themes';
+
+@use './shame';

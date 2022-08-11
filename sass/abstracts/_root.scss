@@ -1,50 +1,50 @@
-@use './mixins' as *;
-@use './functions' as *;
+@use 'media-query' as *;
+@use 'colors' as *;
+@use 'type' as *;
 
 /* ==============================
  * Abstracts | Root
  * ------------------------------ */
 :root {
-  --neutral-100: #{color(neutral, 100)};
-  --neutral-200: #{color(neutral, 200)};
-  --neutral-300: #{color(neutral, 300)};
-  --neutral-400: #{color(neutral, 400)};
-  --neutral-700: #{color(neutral, 700)};
-  --neutral-800: #{color(neutral, 800)};
-  --neutral-900: #{color(neutral, 900)};
-
-  --bg-body: #{color(neutral, 100)};
-
-  --ff-primary: "Source Sans Pro", sans-serif;
-  --ff-secondary: "Merriweather", serif;
-  --ff-body: var(--ff-primary);
-  --ff-heading: var(--ff-secondary);
-
-  --fw-normal: 400;
-  --fw-bold: 700;
-
-  --fs-300: 0.875rem;
-  --fs-400: 1rem;
-  --fs-500: 1.125rem;
-  --fs-600: 1.375rem;
-  --fs-700: 2rem;
-
-  @include mq('md') {
-    --fs-400: 1.125rem;
-    --fs-500: 1.375rem;
-    --fs-600: 2rem;
-    --fs-700: 2.75rem;
+  /* COLORS */
+  @each $color, $shades in $colors {
+    @each $key, $value in $shades {
+      --clr-#{$color}-#{$key}: #{$value};
+    }
   }
-}
 
-.dark-theme {
-  --neutral-100: #{color(neutral, 900)};
-  --neutral-200: #{color(neutral, 800)};
-  --neutral-300: #{color(neutral, 700)};
-  --neutral-400: #{color(neutral, 200)};
-  --neutral-700: #{color(neutral, 300)};
-  --neutral-800: #{color(neutral, 200)};
-  --neutral-900: #{color(neutral, 100)};
-
-  --bg-body: #{color(neutral, 800)};
+  /* FONTS */
+  @each $font, $fonts in $type {
+    @if $font == font-families {
+      /* font families */
+      @each $key, $value in $fonts {
+        --ff-#{$key}: #{$value};
+      }
+    } 
+    
+    @else if $font == font-weights {
+      /* font weights */
+      @each $key, $value in $fonts {
+        --fw-#{$key}: #{$value};
+      }
+    } 
+    
+    @else if $font == font-sizes {
+      @each $screen-size, $font-sizes in $fonts {
+        @if $screen-size == sm {
+          /* font sizes | sm screen */
+          @each $key, $value in $font-sizes {
+            --fs-#{$key}: #{$value};
+          }
+        } @else {
+          @include mq('md') {
+            /* font sizes | lg screen */
+            @each $key, $value in $font-sizes {
+              --fs-#{$key}: #{$value};
+            }
+          }
+        }
+      }
+    }
+  }
 }

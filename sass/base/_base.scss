@@ -3,18 +3,17 @@
 /* ==============================
  * Base | Global
  * ------------------------------ */
-html, 
 body {
-  font-family: var(--ff-body);
+  font-family: var(--ff-primary);
   font-size: var(--fs-400);
   font-weight: var(--fw-normal);
+
+  background-color: var(--clr-neutral-100);
+  color: var(--clr-neutral-400);
 }
 
-body {
-  background-color: var(--bg-body);
-  color: var(--neutral-400);
-}
-
-h1 {
-  font-family: var(--ff-heading);
+p:not([class]),
+ul:not([class]),
+li:not([class]) {
+  max-width: 60ch;
 }

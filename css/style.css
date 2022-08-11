@@ -2,28 +2,31 @@
  * Abstracts | Root
  * ------------------------------ */
 :root {
-  --neutral-100: hsl(0deg, 0%, 100%);
-  --neutral-200: hsl(0deg, 0%, 90%);
-  --neutral-300: hsl(0deg, 0%, 70%);
-  --neutral-400: hsl(244deg, 10%, 30%);
-  --neutral-700: hsl(0deg, 0%, 20%);
-  --neutral-800: hsl(0deg, 0%, 12%);
-  --neutral-900: hsl(0deg, 0%, 0%);
-  --bg-body: hsl(0deg, 0%, 100%);
-  --ff-primary: "Source Sans Pro", sans-serif;
-  --ff-secondary: "Merriweather", serif;
-  --ff-body: var(--ff-primary);
-  --ff-heading: var(--ff-secondary);
+  /* COLORS */
+  --clr-primary-100: hsl(216deg, 100%, 90%);
+  --clr-primary-200: hsl(216deg, 100%, 70%);
+  --clr-primary-300: hsl(216deg, 100%, 60%);
+  --clr-primary-400: hsl(216deg, 100%, 50%);
+  --clr-primary-500: hsl(216deg, 100%, 30%);
+  /* FONTS */
+  /* font families */
+  --ff-primary: 'Rubik', sans-serif;
+  --ff-secondary: 'Merriweather', serif;
+  /* font weights */
   --fw-normal: 400;
+  --fw-medium: 500;
   --fw-bold: 700;
+  /* font sizes | sm screen */
   --fs-300: 0.875rem;
   --fs-400: 1rem;
   --fs-500: 1.125rem;
   --fs-600: 1.375rem;
   --fs-700: 2rem;
 }
-@media (min-width: 50em) {
+@media only screen and (min-width: 50em) {
   :root {
+    /* font sizes | lg screen */
+    --fs-300: 1rem;
     --fs-400: 1.125rem;
     --fs-500: 1.375rem;
     --fs-600: 2rem;
@@ -31,29 +34,32 @@
   }
 }
 
-.dark-theme {
-  --neutral-100: hsl(0deg, 0%, 0%);
-  --neutral-200: hsl(0deg, 0%, 12%);
-  --neutral-300: hsl(0deg, 0%, 20%);
-  --neutral-400: hsl(0deg, 0%, 90%);
-  --neutral-700: hsl(0deg, 0%, 70%);
-  --neutral-800: hsl(0deg, 0%, 90%);
-  --neutral-900: hsl(0deg, 0%, 100%);
-  --bg-body: hsl(0deg, 0%, 12%);
+/* ==============================
+ * Themes | Light & Dark
+ * ------------------------------ */
+:root {
+  /* Light Theme */
+  --clr-neutral-100: hsl(0deg, 0%, 100%);
+  --clr-neutral-200: hsl(250deg, 20%, 90%);
+  --clr-neutral-300: hsl(250deg, 10%, 80%);
+  --clr-neutral-400: hsl(240deg, 1%, 35%);
+  --clr-neutral-700: hsl(222deg, 25%, 20%);
+  --clr-neutral-800: hsl(222deg, 45%, 10%);
+  --clr-neutral-900: hsl(240deg, 5%, 10%);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Theme */
+    --clr-neutral-100: hsl(240deg, 5%, 10%);
+    --clr-neutral-200: hsl(222deg, 45%, 10%);
+    --clr-neutral-300: hsl(222deg, 25%, 20%);
+    --clr-neutral-400: hsl(240deg, 1%, 67%);
+    --clr-neutral-700: hsl(250deg, 10%, 80%);
+    --clr-neutral-800: hsl(250deg, 20%, 90%);
+    --clr-neutral-900: hsl(0deg, 0%, 100%);
+  }
 }
 
-@font-face {
-  font-family: "Merriweather";
-  src: url("/fonts/Merriweather/Merriweather-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Source Sans Pro";
-  src: url("/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
 /* ==============================
  * Vendors | Modern Reset
  * ------------------------------ */
@@ -115,6 +121,17 @@ picture {
   padding: 0;
 }
 
+/* ==============================
+ * Base | Global
+ * ------------------------------ */
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-normal);
+  background-color: var(--clr-neutral-100);
+  color: var(--clr-neutral-400);
+}
+
 p:not([class]),
 ul:not([class]),
 li:not([class]) {
@@ -122,33 +139,115 @@ li:not([class]) {
 }
 
 /* ==============================
- * Base | Global
+ * Utilities | Main
  * ------------------------------ */
-html,
-body {
-  font-family: var(--ff-body);
-  font-size: var(--fs-400);
-  font-weight: var(--fw-normal);
-}
-
-body {
-  background-color: var(--bg-body);
-  color: var(--neutral-400);
-}
-
-h1 {
-  font-family: var(--ff-heading);
-}
-
 .container {
-  width: min(100% - 2rem, 56.25rem);
+  --max-width: 60rem;
+  width: min(100% - 2rem, var(--max-width));
   margin-inline: auto;
+}
+.container[data-width=lg] {
+  --max-width: 75rem;
 }
 
 .flow > *:where(:not(:first-child)) {
   margin-block-start: var(--flow-spacer, 1rem);
 }
 
+/* ==============================
+ * Utilities | Flex
+ * ------------------------------ */
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+[class^=col-] {
+  flex-basis: 100%;
+}
+
+@media only screen and (min-width: 50em) {
+  .col-1 {
+    flex: 0 0 8.3333333333%;
+  }
+  .col-offset-1 {
+    margin-left: 8.3333333333%;
+  }
+  .col-2 {
+    flex: 0 0 16.6666666667%;
+  }
+  .col-offset-2 {
+    margin-left: 16.6666666667%;
+  }
+  .col-3 {
+    flex: 0 0 25%;
+  }
+  .col-offset-3 {
+    margin-left: 25%;
+  }
+  .col-4 {
+    flex: 0 0 33.3333333333%;
+  }
+  .col-offset-4 {
+    margin-left: 33.3333333333%;
+  }
+  .col-5 {
+    flex: 0 0 41.6666666667%;
+  }
+  .col-offset-5 {
+    margin-left: 41.6666666667%;
+  }
+  .col-6 {
+    flex: 0 0 50%;
+  }
+  .col-offset-6 {
+    margin-left: 50%;
+  }
+  .col-7 {
+    flex: 0 0 58.3333333333%;
+  }
+  .col-offset-7 {
+    margin-left: 58.3333333333%;
+  }
+  .col-8 {
+    flex: 0 0 66.6666666667%;
+  }
+  .col-offset-8 {
+    margin-left: 66.6666666667%;
+  }
+  .col-9 {
+    flex: 0 0 75%;
+  }
+  .col-offset-9 {
+    margin-left: 75%;
+  }
+  .col-10 {
+    flex: 0 0 83.3333333333%;
+  }
+  .col-offset-10 {
+    margin-left: 83.3333333333%;
+  }
+  .col-11 {
+    flex: 0 0 91.6666666667%;
+  }
+  .col-offset-11 {
+    margin-left: 91.6666666667%;
+  }
+  .col-12 {
+    flex: 0 0 100%;
+  }
+  .col-offset-12 {
+    margin-left: 100%;
+  }
+}
+/* ==============================
+ * Utilities | Grid
+ * ------------------------------ */
 .grid {
   display: grid;
   gap: var(--gap, 1rem);
@@ -158,6 +257,52 @@ h1 {
   grid-template-columns: repeat(auto-fit, minmax(min(var(--width, 300px), 100%), 1fr));
 }
 
+/* font families */
+.ff-primary {
+  font-family: var(--ff-primary);
+}
+
+.ff-secondary {
+  font-family: var(--ff-secondary);
+}
+
+/* font weights */
+.fw-normal {
+  font-weight: var(--fw-normal);
+}
+
+.fw-medium {
+  font-weight: var(--fw-medium);
+}
+
+.fw-bold {
+  font-weight: var(--fw-bold);
+}
+
+/* font sizes | sm screen */
+.fs-300 {
+  font-size: var(--fs-300);
+}
+
+.fs-400 {
+  font-size: var(--fs-400);
+}
+
+.fs-500 {
+  font-size: var(--fs-500);
+}
+
+.fs-600 {
+  font-size: var(--fs-600);
+}
+
+.fs-700 {
+  font-size: var(--fs-700);
+}
+
+/* ==============================
+ * Utilities | Exceptions
+ * ------------------------------ */
 .sr-only {
   position: absolute;
   overflow: hidden;
@@ -177,6 +322,7 @@ h1 {
  * ------------------------------ */
 .btn {
   display: inline-block;
+  font-weight: var(--fw-bold);
   vertical-align: middle;
   padding: 0.8em 2em;
   border: 0;
@@ -184,16 +330,11 @@ h1 {
   border-radius: 0.2em;
   cursor: pointer;
   color: inherit;
-  font-family: var(--ff-secondary);
   line-height: 1;
   text-decoration: none;
   /* optional */
   letter-spacing: 1px;
   text-transform: capitalize;
-}
-.btn[data-type=primary] {
-  background-color: var(--neutral-800);
-  color: var(--neutral-100);
 }
 
 /* button | active state */
@@ -220,5 +361,24 @@ button:active,
 /* ==============================
  * Pages | Contact
  * ------------------------------ */
+main {
+  padding-block: 4rem;
+}
+
+h1, h2, h3 {
+  font-family: var(--ff-secondary);
+}
+
+h1 {
+  color: var(--clr-neutral-900);
+}
+
+h2 {
+  color: var(--clr-neutral-800);
+}
+
+h3 {
+  color: var(--clr-neutral-700);
+}
 
 /*# sourceMappingURL=style.css.map */

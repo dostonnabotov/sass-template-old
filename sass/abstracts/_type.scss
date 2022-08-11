@@ -1,13 +1,27 @@
-@font-face {
-  font-family: "Merriweather";
-  src: url("/fonts/Merriweather/Merriweather-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Source Sans Pro";
-  src: url("/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
+$type: (
+  font-families: (
+    primary: ("'Rubik'", sans-serif),
+    secondary: ("'Merriweather'", serif),
+  ),
+  font-weights: (
+    normal: 400,
+    medium: 500,
+    bold:   700,
+  ),
+  font-sizes: (
+    sm: (
+      300: 0.875rem,
+      400: 1rem,
+      500: 1.125rem,
+      600: 1.375rem,
+      700: 2rem,
+    ),
+    lg: (
+      300: 1rem,
+      400: 1.125rem,
+      500: 1.375rem,
+      600: 2rem,
+      700: 2.75rem,
+    )
+  ),
+);

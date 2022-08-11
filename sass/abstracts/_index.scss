@@ -1,7 +1,5 @@
-@forward './variables';
 @forward './root';
-@forward './type';
-@forward './breakpoints';
-@forward './colors';
+@forward './media-query';
 @forward './mixins';
-@forward './functions';
+@forward './colors';
+@forward './type';

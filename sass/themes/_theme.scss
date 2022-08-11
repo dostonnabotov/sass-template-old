@@ -1,0 +1,43 @@
+@use '../abstracts' as *;
+
+/* ==============================
+ * Themes | Light & Dark
+ * ------------------------------ */
+$neutral: (
+  light-theme: (
+    100: hsl(0, 0%, 100%),
+    200: hsl(250, 20%, 90%),
+    300: hsl(250, 10%, 80%),
+    400: hsl(240, 1%, 35%),
+    700: hsl(222, 25%, 20%),
+    800: hsl(222, 45%, 10%),
+    900: hsl(240, 5%, 10%),
+  ),
+  dark-theme: (
+    100: hsl(240, 5%, 10%),
+    200: hsl(222, 45%, 10%),
+    300: hsl(222, 25%, 20%),
+    400: hsl(240, 1%, 67%),
+    700: hsl(250, 10%, 80%),
+    800: hsl(250, 20%, 90%),
+    900: hsl(0, 0%, 100%),
+  )
+);
+
+:root {
+  @each $theme, $keys in $neutral {
+    @if $theme == light-theme {
+      /* Light Theme */
+      @each $key, $value in $keys {
+        --clr-neutral-#{$key}: #{$value};
+      }
+    } @else {
+      @media (prefers-color-scheme: dark) {
+        /* Dark Theme */
+        @each $key, $value in $keys {
+          --clr-neutral-#{$key}: #{$value};
+        }
+      }
+    }
+  }
+}

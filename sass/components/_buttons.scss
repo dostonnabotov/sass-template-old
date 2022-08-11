@@ -5,6 +5,8 @@
  * ------------------------------ */
 .btn {
   display: inline-block;
+
+  font-weight: var(--fw-bold);
   vertical-align: middle;
   
   padding: .8em 2em;
@@ -14,18 +16,12 @@
   cursor: pointer;
   color: inherit;
 
-  font-family: var(--ff-secondary);
   line-height: 1;
   text-decoration: none;
 
   /* optional */
   letter-spacing: 1px;
   text-transform: capitalize;
-
-  &[data-type="primary"] {
-    background-color: var(--neutral-800);
-    color: var(--neutral-100);
-  }
 }
 
 /* button | active state */

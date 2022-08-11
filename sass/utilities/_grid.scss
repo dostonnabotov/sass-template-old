@@ -1,3 +1,8 @@
+@use '../abstracts' as *;
+
+/* ==============================
+ * Utilities | Grid
+ * ------------------------------ */
 .grid {
   display: grid;
   gap: var(--gap, 1rem);
