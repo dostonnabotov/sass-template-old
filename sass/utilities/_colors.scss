@@ -1,0 +1,20 @@
+@use "../abstracts" as *;
+
+/* ==============================
+ * Utilities | Colors
+ * ------------------------------ */
+
+// you can uncomment this piece of code, if you want to generate
+// utility colors for background and text
+
+// @each $color, $shades in $colors {
+//   @each $key, $value in $shades {
+//     .text-#{$color}-#{$key} {
+//       color: var(--clr-#{$color}-#{$key});
+//     }
+
+//     .bg-#{$color}-#{$key} {
+//       background-color: var(--clr-#{$color}-#{$key});
+//     }
+//   }
+// }

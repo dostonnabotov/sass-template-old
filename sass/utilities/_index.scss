@@ -1,5 +1,4 @@
-@forward './main';
-@forward './flex';
-@forward './grid';
-@forward './typography';
-@forward './exceptions';
+@forward "./composition";
+@forward "./typography";
+@forward "./colors";
+@forward "./exceptions";

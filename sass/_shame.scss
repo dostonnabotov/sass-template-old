@@ -1,13 +1,18 @@
-@use './abstracts' as *;
+@use "./abstracts" as *;
 
-main {
-  padding-block: 4rem;
+/* ==============================
+ * Shame
+ * ------------------------------ */
+/* remove this */
+.sass {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  gap: 1rem;
+
+  & img {
+    width: fit-content;
+    margin-inline: auto;
+  }
 }
-
-h1, h2, h3 {
-  font-family: var(--ff-secondary);
-}
-
-h1 { color: var(--clr-neutral-900); }
-h2 { color: var(--clr-neutral-800); }
-h3 { color: var(--clr-neutral-700); }
+/* /remove this */

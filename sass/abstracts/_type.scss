@@ -1,27 +1,16 @@
-$type: (
-  font-families: (
-    primary: ("'Rubik'", sans-serif),
-    secondary: ("'Merriweather'", serif),
+$type-scale: (
+  sm: (
+    300: 0.875rem,
+    400: 1rem,
+    500: 1.125rem,
+    600: 1.375rem,
+    700: 2rem,
   ),
-  font-weights: (
-    normal: 400,
-    medium: 500,
-    bold:   700,
-  ),
-  font-sizes: (
-    sm: (
-      300: 0.875rem,
-      400: 1rem,
-      500: 1.125rem,
-      600: 1.375rem,
-      700: 2rem,
-    ),
-    lg: (
-      300: 1rem,
-      400: 1.125rem,
-      500: 1.375rem,
-      600: 2rem,
-      700: 2.75rem,
-    )
-  ),
+  lg: (
+    300: 1rem,
+    400: 1.125rem,
+    500: 1.375rem,
+    600: 2rem,
+    700: 2.75rem,
+  )
 );

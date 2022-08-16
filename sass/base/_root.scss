@@ -1,0 +1,38 @@
+@use "../abstracts" as *;
+
+/* ==============================
+ * Abstracts | Root
+ * ------------------------------ */
+:root {
+  /* COLORS */
+  @each $color, $shades in $colors {
+    @each $key, $value in $shades {
+      --clr-#{$color}-#{$key}: #{$value};
+    }
+  }
+
+  /* FONTS */
+  --ff-primary: "Rubik", sans-serif;
+  --ff-secondary: "Merriweather", serif;
+  --ff-body: var(--ff-primary);
+
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-700: 700;
+
+  @each $screen-size, $sizes in $type-scale {
+    @if $screen-size == sm {
+      /* font sizes | sm screen */
+      @each $key, $value in $sizes {
+        --fs-#{$key}: #{$value};
+      }
+    } @else {
+      @include mq("md") {
+        /* font sizes | lg screen */
+        @each $key, $value in $sizes {
+          --fs-#{$key}: #{$value};
+        }
+      }
+    }
+  }
+}
